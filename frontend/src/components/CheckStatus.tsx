@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ArrowLeft, Delete, CornerDownLeft } from 'lucide-react';
+import { Search, ArrowLeft, Delete} from 'lucide-react';
 
 interface CheckStatusProps {
   onBack: () => void;
