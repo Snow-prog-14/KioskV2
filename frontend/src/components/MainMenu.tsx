@@ -1,11 +1,12 @@
 import React from 'react';
-import { FilePlus, Search, Globe, HelpCircle } from 'lucide-react';
+import { FilePlus, Search, Globe, HelpCircle, ArrowLeft } from 'lucide-react';
 
 interface MainMenuProps {
   onSelectNewRequest: () => void;
   onSelectCheckStatus: () => void;
   onSelectLanguage: () => void;
   onSelectHelp: () => void;
+  onBack: () => void; // Added back handler prop
 }
 
 export const MainMenu: React.FC<MainMenuProps> = ({
@@ -13,10 +14,10 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   onSelectCheckStatus,
   onSelectLanguage,
   onSelectHelp,
+  onBack,
 }) => {
   return (
     <div style={{
-      // Unified brand gradient matching the landing page
       background: 'radial-gradient(circle at center, #229353 0%, #0d5c2e 100%)',
       color: '#ffffff',
       height: '100vh',
@@ -55,24 +56,46 @@ export const MainMenu: React.FC<MainMenuProps> = ({
         display: 'flex',
         flexDirection: 'column',
         zIndex: 2,
-        maxHeight: '92vh'
+        maxHeight: '94vh'
       }}>
         
-        {/* --- CARD HEADER (Unified Brand Green) --- */}
+        {/* --- CARD HEADER --- */}
         <div style={{
           background: 'linear-gradient(135deg, #1e824a 0%, #0d5c2e 100%)',
-          padding: '2rem 1.5rem',
+          padding: '1.75rem 1.5rem',
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '1rem',
-          borderBottom: '4px solid #229353'
+          gap: '0.75rem',
+          borderBottom: '4px solid #229353',
+          position: 'relative'
         }}>
-          {/* Actual Barangay Emblem Layout Placeholder */}
+          {/* Subtle Top-Left Corner Back Button for layout symmetry */}
+          <button 
+            onClick={onBack}
+            style={{
+              position: 'absolute',
+              left: '1rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'rgba(255, 255, 255, 0.15)',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: '50%',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer'
+            }}
+          >
+            <ArrowLeft size={20} color="#ffffff" />
+          </button>
+
           <div style={{
-            width: '80px',
-            height: '80px',
+            width: '65px',
+            height: '65px',
             borderRadius: '50%',
             backgroundColor: 'rgba(255, 255, 255, 0.15)',
             border: '2px solid rgba(255, 255, 255, 0.4)',
@@ -90,17 +113,17 @@ export const MainMenu: React.FC<MainMenuProps> = ({
 
           <div>
             <div style={{
-              fontSize: '0.85rem',
+              fontSize: '0.8rem',
               fontWeight: 800,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: '#a3e635', // Vibrant lime accent for readability
-              marginBottom: '0.25rem'
+              color: '#a3e635',
+              marginBottom: '0.15rem'
             }}>
               Official Document Services
             </div>
             <h2 style={{
-              fontSize: 'clamp(1.35rem, 4.5vw, 1.65rem)',
+              fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
               fontWeight: 800,
               margin: 0,
               color: '#ffffff',
@@ -113,10 +136,10 @@ export const MainMenu: React.FC<MainMenuProps> = ({
 
         {/* --- CARD BODY / OPTIONS VIEW --- */}
         <div style={{
-          padding: '1.75rem 1.5rem',
+          padding: '1.5rem 1.5rem 1.75rem 1.5rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.25rem',
+          gap: '1.1rem',
           backgroundColor: '#f8fafc'
         }}>
           
@@ -126,12 +149,12 @@ export const MainMenu: React.FC<MainMenuProps> = ({
             style={{
               width: '100%',
               backgroundColor: '#ffffff',
-              border: '3px solid #229353', // Deep crisp border for visibility
+              border: '3px solid #229353',
               borderRadius: '20px',
-              padding: '1.25rem',
+              padding: '1.15rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '1.25rem',
+              gap: '1.15rem',
               textAlign: 'left',
               cursor: 'pointer',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
@@ -144,8 +167,8 @@ export const MainMenu: React.FC<MainMenuProps> = ({
             onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '60px',
+              height: '60px',
               borderRadius: '16px',
               backgroundColor: '#229353',
               display: 'flex',
@@ -154,33 +177,33 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               flexShrink: 0,
               boxShadow: '0 4px 10px rgba(34, 147, 96, 0.3)'
             }}>
-              <FilePlus size={32} color="#ffffff" />
+              <FilePlus size={30} color="#ffffff" />
             </div>
             <div style={{ flexGrow: 1 }}>
-              <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0d5c2e', marginBottom: '0.2rem' }}>
+              <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0d5c2e', marginBottom: '0.15rem' }}>
                 START NEW REQUEST
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 600, color: '#475569', marginBottom: '0.25rem' }}>
+              <div style={{ fontSize: '1rem', fontWeight: 600, color: '#475569', marginBottom: '0.2rem' }}>
                 Request certificates, clearances, or permits
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#166534', display: 'flex', alignItems: 'center' }}>
-                Magsimite ng kahilingan ❯
+              <div style={{ fontSize: '1rem', fontWeight: 700, color: '#166534', display: 'flex', alignItems: 'center' }}>
+                Magsumite ng kahilingan ❯
               </div>
             </div>
           </button>
 
-          {/* OPTION 2: CHECK STATUS (Now Uniformly Green!) */}
+          {/* OPTION 2: CHECK STATUS */}
           <button
             onClick={onSelectCheckStatus}
             style={{
               width: '100%',
               backgroundColor: '#ffffff',
-              border: '3px solid #16a34a', // Clear contrast green matching theme
+              border: '3px solid #16a34a',
               borderRadius: '20px',
-              padding: '1.25rem',
+              padding: '1.15rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '1.25rem',
+              gap: '1.15rem',
               textAlign: 'left',
               cursor: 'pointer',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
@@ -193,8 +216,8 @@ export const MainMenu: React.FC<MainMenuProps> = ({
             onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '60px',
+              height: '60px',
               borderRadius: '16px',
               backgroundColor: '#16a34a',
               display: 'flex',
@@ -203,27 +226,27 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               flexShrink: 0,
               boxShadow: '0 4px 10px rgba(22, 163, 74, 0.3)'
             }}>
-              <Search size={32} color="#ffffff" />
+              <Search size={30} color="#ffffff" />
             </div>
             <div style={{ flexGrow: 1 }}>
-              <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#14532d', marginBottom: '0.2rem' }}>
+              <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#14532d', marginBottom: '0.15rem' }}>
                 CHECK STATUS
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 600, color: '#475569', marginBottom: '0.25rem' }}>
+              <div style={{ fontSize: '1rem', fontWeight: 600, color: '#475569', marginBottom: '0.2rem' }}>
                 Track your request progress using a reference code
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#166534', display: 'flex', alignItems: 'center' }}>
+              <div style={{ fontSize: '1rem', fontWeight: 700, color: '#166534', display: 'flex', alignItems: 'center' }}>
                 Tingnan ang katayuan ❯
               </div>
             </div>
           </button>
 
-          {/* --- BOTTOM UTILITIES BUTTONS (Larger & Accessible) --- */}
+          {/* --- BOTTOM UTILITIES BUTTONS --- */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '1rem',
-            marginTop: '0.5rem'
+            marginTop: '0.25rem'
           }}>
             <button
               onClick={onSelectLanguage}
@@ -231,21 +254,20 @@ export const MainMenu: React.FC<MainMenuProps> = ({
                 backgroundColor: '#ffffff',
                 border: '2px solid #cbd5e1',
                 borderRadius: '100px',
-                padding: '0.9rem 1rem',
-                fontSize: '1.1rem',
+                padding: '0.85rem 1rem',
+                fontSize: '1.05rem',
                 fontWeight: 700,
                 color: '#334155',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.5rem',
-                cursor: 'pointer',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.05)'
+                cursor: 'pointer'
               }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
             >
-              <Globe size={20} color="#64748b" />
+              <Globe size={18} color="#64748b" />
               <span>Language / Wika</span>
             </button>
 
@@ -255,24 +277,50 @@ export const MainMenu: React.FC<MainMenuProps> = ({
                 backgroundColor: '#ffffff',
                 border: '2px solid #cbd5e1',
                 borderRadius: '100px',
-                padding: '0.9rem 1rem',
-                fontSize: '1.1rem',
+                padding: '0.85rem 1rem',
+                fontSize: '1.05rem',
                 fontWeight: 700,
                 color: '#334155',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.5rem',
-                cursor: 'pointer',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.05)'
+                cursor: 'pointer'
               }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
             >
-              <HelpCircle size={20} color="#64748b" />
+              <HelpCircle size={18} color="#64748b" />
               <span>Help / Tulong</span>
             </button>
           </div>
+
+          {/* --- DEDICATED GIANT BACK BUTTON FOR SENIORS --- */}
+          <button
+            onClick={onBack}
+            style={{
+              width: '100%',
+              backgroundColor: '#f1f5f9',
+              border: '2px solid #cbd5e1',
+              borderRadius: '100px',
+              padding: '1rem 0',
+              fontSize: '1.2rem',
+              fontWeight: 800,
+              color: '#475569',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.75rem',
+              cursor: 'pointer',
+              marginTop: '0.5rem',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e2e8f0'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f1f5f9'}
+          >
+            <ArrowLeft size={20} color="#475569" />
+            <span>Bumalik sa Simula (Go Back)</span>
+          </button>
 
         </div>
       </div>

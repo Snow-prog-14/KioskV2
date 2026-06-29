@@ -22,13 +22,13 @@ export default function App() {
       {currentScreen === 'LANDING' && (
         <LandingPage onStart={handleStartKiosk} />
       )}
-
-      {currentScreen === 'MAIN_MENU' && (
+{currentScreen === 'MAIN_MENU' && (
         <MainMenu
           onSelectNewRequest={() => setCurrentScreen('NEW_REQUEST')}
           onSelectCheckStatus={() => setCurrentScreen('CHECK_STATUS')}
           onSelectLanguage={() => setCurrentScreen('LANGUAGE')}
           onSelectHelp={() => setCurrentScreen('HELP')}
+          onBack={() => setCurrentScreen('LANDING')} // Added this handler line!
         />
       )}
 
