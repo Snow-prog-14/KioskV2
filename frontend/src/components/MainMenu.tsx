@@ -6,7 +6,7 @@ interface MainMenuProps {
   onSelectCheckStatus: () => void;
   onSelectLanguage: () => void;
   onSelectHelp: () => void;
-  onBack: () => void; // Added back handler prop
+  onBack: () => void;
 }
 
 export const MainMenu: React.FC<MainMenuProps> = ({
@@ -59,7 +59,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
         maxHeight: '94vh'
       }}>
         
-        {/* --- CARD HEADER --- */}
+        {/* --- CARD HEADER (Cleaned up & perfectly centered) --- */}
         <div style={{
           background: 'linear-gradient(135deg, #1e824a 0%, #0d5c2e 100%)',
           padding: '1.75rem 1.5rem',
@@ -68,31 +68,9 @@ export const MainMenu: React.FC<MainMenuProps> = ({
           flexDirection: 'column',
           alignItems: 'center',
           gap: '0.75rem',
-          borderBottom: '4px solid #229353',
-          position: 'relative'
+          borderBottom: '4px solid #229353'
         }}>
-          {/* Subtle Top-Left Corner Back Button for layout symmetry */}
-          <button 
-            onClick={onBack}
-            style={{
-              position: 'absolute',
-              left: '1rem',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'rgba(255, 255, 255, 0.15)',
-              border: '1px solid rgba(255,255,255,0.3)',
-              borderRadius: '50%',
-              width: '44px',
-              height: '44px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer'
-            }}
-          >
-            <ArrowLeft size={20} color="#ffffff" />
-          </button>
-
+          
           <div style={{
             width: '65px',
             height: '65px',
